@@ -23,10 +23,11 @@ class App extends React.Component {
 			this.setState({ searchfield: e.target.value })
 	}
 	render() {
-		const filteredRobotsNames = this.state.robots.filter(robots => {
-			return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+		const { robots, searchfield } = this.state;
+		const filteredRobotsNames = robots.filter(robot => {
+			return robot.name.toLowerCase().includes(searchfield.toLowerCase());
 		})
-		if (this.state.robots.length === 0) {
+		if (!robots.length) {
 			return <h1 className="tc f1">Loading...</h1>
 		} else {
 			return (
